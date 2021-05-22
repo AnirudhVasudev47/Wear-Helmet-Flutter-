@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:wear_helmet/global/color.dart';
@@ -18,9 +19,11 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
   late AnimationController animationController;
+  late AnimationController buttonAnimation;
   String currentUser = FirebaseAuth.instance.currentUser!.uid;
   DatabaseReference reference =
       FirebaseDatabase.instance.reference().child('users');
+  bool status = false;
 
   Future<String> getData() async => reference
           .child(currentUser)
@@ -250,7 +253,43 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
             padding: EdgeInsets.symmetric(
               horizontal: screenUtil.setHeight(24),
             ),
-            // child: ,
+            child: FlutterSwitch(
+              width: screenUtil.setWidth(345),
+              height: screenUtil.setHeight(70),
+              valueFontSize: 18.sp,
+              activeText: '\t\t\t\t\t\t\t\t\t\tClick to stop ride',
+              inactiveText: 'Click to start ride\t\t\t\t\t\t\t\t\t\t',
+              activeTextFontWeight: FontWeight.w500,
+              inactiveTextFontWeight: FontWeight.w500,
+              activeColor: Color(0xff9D4EDD),
+              activeTextColor: ThemeColors.white,
+              inactiveTextColor: Color(0xff181818),
+              toggleColor: ThemeColors.prime,
+              toggleSize: 45.0,
+              activeIcon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  Icons.lock_open,
+                  color: ThemeColors.white,
+                ),
+              ),
+              inactiveIcon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  Icons.lock_outline,
+                  color: ThemeColors.white,
+                ),
+              ),
+              value: status,
+              borderRadius: 30.0,
+              padding: 8.0,
+              showOnOff: true,
+              onToggle: (val) {
+                setState(() {
+                  status = val;
+                });
+              },
+            ),
           ),
         ],
       ),
