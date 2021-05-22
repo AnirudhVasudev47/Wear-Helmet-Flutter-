@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "177438520935",
+    "firebase_url": "https://wear-helmet-app-default-rtdb.firebaseio.com",
+    "project_id": "wear-helmet-app",
+    "storage_bucket": "wear-helmet-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177438520935:android:7f225b778097589cb686c2",
+        "android_client_info": {
+          "package_name": "com.codedesign.wearhelmetapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177438520935-tna00rllmdo3den2rhh0s3qvgqrlv73n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codedesign.wearhelmetapp",
+            "certificate_hash": "15378169ffd6cbbcc3796ecd62ad03b245750cce"
+          }
+        },
+        {
+          "client_id": "177438520935-p7derhe3pk9q1tvg2cdrkd1mclrh36ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdgT7qW8SWIcrePlCeg2rs-elXWkBEzDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177438520935-p7derhe3pk9q1tvg2cdrkd1mclrh36ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177438520935:android:da2ac5207953ab70b686c2",
+        "android_client_info": {
+          "package_name": "com.codedesign.wearhelmetclientapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177438520935-vgejoiuiqdbb1ks1ktc8r7gmjbnha0eq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codedesign.wearhelmetclientapp",
+            "certificate_hash": "15378169ffd6cbbcc3796ecd62ad03b245750cce"
+          }
+        },
+        {
+          "client_id": "177438520935-p7derhe3pk9q1tvg2cdrkd1mclrh36ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdgT7qW8SWIcrePlCeg2rs-elXWkBEzDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177438520935-p7derhe3pk9q1tvg2cdrkd1mclrh36ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177438520935:android:b99f28b382eb5f00b686c2",
+        "android_client_info": {
+          "package_name": "com.example.wear_helmet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177438520935-bs9nokrrmr36lkhn5ueg6gllo9t4k7fa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wear_helmet",
+            "certificate_hash": "15378169ffd6cbbcc3796ecd62ad03b245750cce"
+          }
+        },
+        {
+          "client_id": "177438520935-p7derhe3pk9q1tvg2cdrkd1mclrh36ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdgT7qW8SWIcrePlCeg2rs-elXWkBEzDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177438520935-p7derhe3pk9q1tvg2cdrkd1mclrh36ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
