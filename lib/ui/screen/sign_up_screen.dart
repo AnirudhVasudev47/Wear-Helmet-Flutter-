@@ -395,7 +395,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       userInfo['dob'] = '';
       userInfo['points'] = 0;
       userInfo['kilometer'] = 0;
-      userInfo['profile'] = 'https://img-premium.flaticon.com/png/512/860/860784.png?token=exp=1621271586~hmac=f9720192db639fe7273fe0eb841e08e7';
+      userInfo['profile'] = '"https://firebasestorage.googleapis.com/v0/b/wear-helmet-app.appspot.com/o/profile%2Fuser.png?alt=media&token=42a84851-aa23-40eb-8bd3-281f5f6c39f2"';
       databaseRef
           .child(FirebaseAuth.instance.currentUser!.uid.toString())
           .set(userInfo);
