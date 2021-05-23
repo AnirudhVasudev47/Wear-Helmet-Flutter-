@@ -47,28 +47,21 @@ class _RewardsTabState extends State<RewardsTab> {
             ),
           ),
           Expanded(
-            child: StreamBuilder(
-              stream: reference.onValue,
-              builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
-                if (snapshot.hasData) {
-                  Event? rewards = snapshot.data;
-
-                  return Container(
-                    padding: EdgeInsets.only(top: screenUtil.setHeight(32)),
-                    child: Column(
-                      children: [
-                        RewardsCard(
-                          imageUrl:
-                          'https://firebasestorage.googleapis.com/v0/b/wear-helmet-app.appspot.com/o/images%2F669505d1-fec6-4aef-957c-374a44ff0a8a.png?alt=media&token=00ebb8d8-a503-4c9d-944a-353613aefe8d',
-                          name: 'Hues Glam',
-                          desc: "Get your make up done with great detailing.",
-                        ),
-                      ],
-                    ),
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: screenUtil.setWidth(24),
+              ).copyWith(top: screenUtil.setHeight(32)),
+              child: FirebaseAnimatedList(
+                query: reference,
+                itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                    Animation<double> animation, int index) {
+                  return RewardsCard(
+                    imageUrl: snapshot.value['storeBanner'],
+                    name: snapshot.value['storeName'],
+                    desc: snapshot.value['storeDesc'],
                   );
-                }
-                return Center(child: CircularProgressIndicator());
-              },
+                },
+              ),
             ),
           ),
         ],
@@ -76,3 +69,71 @@ class _RewardsTabState extends State<RewardsTab> {
     );
   }
 }
+
+/*
+StreamBuilder(
+              stream: reference.onValue,
+              builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
+                if (snapshot.hasData) {
+                  Event? rewards = snapshot.data;
+                  print(rewards!.snapshot.value);
+                  List<Store> store = [];
+                  for (var value in rewards.snapshot.value.values) {
+                    store.add(new Store.fromJson(value));
+                  }
+                  return Container(
+                    padding: EdgeInsets.only(top: screenUtil.setHeight(32)),
+                    child: Column(
+                      children: [
+                        ListView.builder(
+                          itemCount: store.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return RewardsCard(
+                              imageUrl: store.elementAt(index).storeBanner,
+                              name: store.elementAt(index).storeName,
+                              desc: store.elementAt(index).storeDesc,
+                            );
+                          },
+                        )
+                      ],
+                    ),
+                  );
+                }
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+
+FutureBuilder(
+              future: reference.once(),
+              builder:
+                  (BuildContext context, AsyncSnapshot<DataSnapshot> snapshot) {
+                if (snapshot.hasData) {
+                  print(snapshot.data!.value);
+                  List<StoreModel> stores = [];
+                  Map<dynamic, dynamic> rewards = snapshot.data!.value;
+                  for (var store in rewards.values) {
+                    StoreModel model = new StoreModel(store.value["storeName"],
+                        store.value["storeDesc"], store.value["storeBanner"]);
+                    stores.add(model);
+                  }
+
+                  return Column(
+                    children: [
+                      ListView.builder(
+                        itemCount: stores.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return RewardsCard(
+                            imageUrl: stores.elementAt(index).storeBanner,
+                            name: stores.elementAt(index).storeName,
+                            desc: stores.elementAt(index).storeDesc,
+                          );
+                        },
+                      )
+                    ],
+                  );
+                }
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+
+ */

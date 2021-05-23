@@ -1,9 +1,10 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wear_helmet/global/color.dart';
 import 'package:wear_helmet/ui/layout/custom_dialog.dart';
 
-class RewardsCard extends StatelessWidget {
+class RewardsCard extends StatefulWidget {
   final String imageUrl;
   final String name;
   final String desc;
@@ -14,6 +15,30 @@ class RewardsCard extends StatelessWidget {
       required this.name,
       required this.desc})
       : super(key: key);
+
+  @override
+  _RewardsCardState createState() => _RewardsCardState();
+}
+
+class _RewardsCardState extends State<RewardsCard> {
+  late String image;
+
+  @override
+  void initState() {
+    super.initState();
+    getImage();
+  }
+
+  getImage() async {
+    ListResult result = await FirebaseStorage.instance.ref().listAll();
+    result.items.forEach((Reference ref) {
+      print('Found file: $ref');
+    });
+
+    image = await FirebaseStorage.instance
+        .ref('images/${widget.imageUrl}.png')
+        .getDownloadURL();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +60,20 @@ class RewardsCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
             ),
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
+            child: FutureBuilder(
+              future: getImage(),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (!snapshot.hasData) {
+                  return Image.network(
+                    widget.imageUrl,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.centerLeft,
+                  );
+                }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
             ),
           ),
           Expanded(
@@ -48,14 +84,14 @@ class RewardsCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    widget.name,
                     style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
-                    desc,
+                    widget.desc,
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
@@ -89,7 +125,7 @@ class RewardsCard extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            print(name);
+                            print(widget.name);
                           },
                         ),
                       ),

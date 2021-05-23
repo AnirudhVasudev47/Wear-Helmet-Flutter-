@@ -395,7 +395,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       userInfo['dob'] = '';
       userInfo['points'] = 0;
       userInfo['kilometer'] = 0;
-      userInfo['profile'] = '"https://firebasestorage.googleapis.com/v0/b/wear-helmet-app.appspot.com/o/profile%2Fuser.png?alt=media&token=42a84851-aa23-40eb-8bd3-281f5f6c39f2"';
+      userInfo['profile'] = "https://firebasestorage.googleapis.com/v0/b/wear-helmet-app.appspot.com/o/profile%2Fuser.png?alt=media&token=42a84851-aa23-40eb-8bd3-281f5f6c39f2";
       databaseRef
           .child(FirebaseAuth.instance.currentUser!.uid.toString())
           .set(userInfo);
